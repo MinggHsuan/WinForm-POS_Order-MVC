@@ -17,9 +17,9 @@ namespace POS_Order.AIModule
         public AIResult(AIResponse response)
         {
             this.response = response;
-            this.ResponseText = response.candidates[0].content.parts[0].functionCall.args.discount;
+            this.ResponseText = response.candidates[0].content.parts[0].functionCall.args.reason;
+            this.ResponseSource = response.candidates[0].content.parts[0].functionCall.args.discountType;
             this.CanExcuteTool = response.candidates[0].content.parts[0].functionCall != null;
-
         }
 
         public AIResponse.Args RunTool()

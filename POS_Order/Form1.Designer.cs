@@ -40,7 +40,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(922, 557);
+            this.button1.Location = new System.Drawing.Point(1113, 557);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 33);
             this.button1.TabIndex = 1;
@@ -51,7 +51,7 @@
             // totalLab
             // 
             this.totalLab.AutoSize = true;
-            this.totalLab.Location = new System.Drawing.Point(878, 566);
+            this.totalLab.Location = new System.Drawing.Point(1076, 566);
             this.totalLab.Name = "totalLab";
             this.totalLab.Size = new System.Drawing.Size(14, 15);
             this.totalLab.TabIndex = 2;
@@ -67,7 +67,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(806, 566);
+            this.label9.Location = new System.Drawing.Point(1014, 566);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(56, 15);
             this.label9.TabIndex = 12;
@@ -78,7 +78,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(557, 563);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(243, 23);
+            this.comboBox1.Size = new System.Drawing.Size(441, 23);
             this.comboBox1.TabIndex = 13;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 

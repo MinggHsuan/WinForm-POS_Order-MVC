@@ -38,7 +38,6 @@ namespace POS_Order.Strategies
             }
 
             int minCombo = classify.Min(x => x.totalAmount / x.requirAmount);
-            //int disSetPrice = discountType.Rewards.Select(x => x.RewardsPrice).First();
 
             var setPrice = MenuData.Menus.SelectMany(x => x.Foods)
                 .Join(buyItem,
@@ -49,16 +48,17 @@ namespace POS_Order.Strategies
                     name = menu.Name,
                     price = menu.Price,
                     buy.amount,
+                    buy.conditionAmount,
                     buy.conditionID,
                     subtotal = menu.Price * buy.conditionAmount,
                 }).ToList();
 
 
-            var setBox = setPrice.GroupBy(x => new { x.conditionID, x.amount })
+            var setBox = setPrice.GroupBy(x => new { x.conditionID, x.conditionAmount })
                                  .Select(x =>
                                     x.SelectMany(y => Enumerable.Repeat(y.price, y.amount)
                                      .OrderBy(z => z))
-                                     .Take(x.Key.amount * minCombo)
+                                     .Take(x.Key.conditionAmount * minCombo)
                                      .Sum()
                                  ).Sum();
 
@@ -68,22 +68,16 @@ namespace POS_Order.Strategies
                 int discountPrice = x.RewardsSetPrice;
                 if (x.RewardsOff != 0)
                 {
-                    discountPrice = (int)(float)(setBox * (x.RewardsOff));
+                    discountPrice = (int)(float)(setPrice.Sum(y => y.subtotal) * (1 - x.RewardsOff));
+                    return new Item($"(折扣)", -discountPrice * minCombo, 1);
                 }
                 if (x.RewardsPrice != 0)
                 {
-                    return new Item($"(折扣)", x.RewardsPrice * minCombo - setPrice.Sum(y => y.subtotal), 1);
+                    return new Item($"(折扣)", x.RewardsPrice * minCombo - setBox, 1);
                 }
-
                 return new Item($"(折扣)", discountPrice * minCombo - setBox, 1);
+                //return new Item($"(折扣)", (discountPrice - setPrice.Sum(y => y.subtotal)) * minCombo, 1);
             }));
-
-
-
-
-
-
-
         }
     }
 }

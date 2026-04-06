@@ -15,14 +15,6 @@ namespace POS_Order.AIModule
         AIRequest aIRequest = new AIRequest();
         public AIAgent()
         {
-            //var temp = Assembly.GetExecutingAssembly().DefinedTypes.Where(x =>
-            //{
-            //    if (x.Name == "DiscountDeclaration")
-            //    {
-
-            //    }
-            //    return x.BaseType == typeof(ToolDeclaration);
-            //}).ToList();
             var tools = Assembly.GetExecutingAssembly().DefinedTypes
               .Where(x => x.BaseType == typeof(ToolDeclaration))
               .Select(x =>
@@ -31,11 +23,7 @@ namespace POS_Order.AIModule
 
               }).ToList();
 
-
             aIRequest.AddTools(tools);
-            // 使用LINQ 去反找程序集中，只有ToolDeclaration的類別，並且 new 出來 (Activator.CreateInstance)
-            // 並且添加到 tools 裡面，完成整個 AIRequest摺疊收合
-
         }
         public void AddPrompt(AgentType agentType, string text)
         {
@@ -45,7 +33,7 @@ namespace POS_Order.AIModule
         {
             HttpClient client = new HttpClient();
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent");
-            request.Headers.Add("x-goog-api-key", "AIzaSyAugP0UJN206bblH15_8FuetidN95bezWU");
+            request.Headers.Add("x-goog-api-key", "API-KEY");
             string content = JsonConvert.SerializeObject(aIRequest);
             request.Content = new StringContent(content);
             var response = await client.SendAsync(request);
@@ -53,11 +41,6 @@ namespace POS_Order.AIModule
             string responseString = await response.Content.ReadAsStringAsync();
             AIResponse aIResponse = JsonConvert.DeserializeObject<AIResponse>(responseString);
             AIResult result = new AIResult(aIResponse);
-            //if (!result.CanExcuteTool)
-            //{
-            //    AddPrompt(AgentType.Model, result.ResponseText);
-            //}
-            //result.RunTool();
             if (!result.CanExcuteTool)
             {
                 AddPrompt(AgentType.Model, result.ResponseText);

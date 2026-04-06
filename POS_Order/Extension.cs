@@ -13,19 +13,6 @@ namespace POS_Order
 
     public static class Extension
     {
-        public static int GetDigitalCount(this string input)
-        {
-            int count = 0;
-            for (int i = 0; i < input.Length; i++)
-            {
-                if (Char.IsDigit(input[i]))
-                {
-                    count++;
-                }
-            }
-            return count;
-        }
-
         public static void AutoGenerate(this FlowLayoutPanel flowLayoutPanel, EventHandler checkedChanged, EventHandler valueChanged)
         {
             for (int i = 0; i < MenuData.Menus.Length; i++)

@@ -26,9 +26,7 @@ namespace POS_Order
         private void Form1_Load(object sender, EventArgs e)
         {
             menuContainer.AutoGenerate(Checkbox_CheckedChange, Numberic_ValueChange);
-
             PanelHandlers.Handler += GetPanel;
-
             comboBox1.DataSource = MenuData.Discounts;
             comboBox1.DisplayMember = "Name";
         }
@@ -39,12 +37,10 @@ namespace POS_Order
             FlowLayoutPanel panel = (FlowLayoutPanel)checkBox.Parent;
             NumericUpDown numericUpDown = (NumericUpDown)panel.Controls[1];
             numericUpDown.Value = checkBox.Checked == true ? 1 : 0;
-
         }
 
         private async void Numberic_ValueChange(object sender, EventArgs e)
         {
-
             NumericUpDown numericUpDown = (NumericUpDown)sender;
             FlowLayoutPanel panel = (FlowLayoutPanel)numericUpDown.Parent;
             CheckBox checkbox = (CheckBox)panel.Controls[0];

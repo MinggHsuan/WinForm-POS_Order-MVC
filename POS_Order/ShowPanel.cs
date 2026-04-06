@@ -66,7 +66,6 @@ namespace POS_Order
                 panelbox.Controls.Add(amount);
                 panelbox.Controls.Add(subtotal);
             }
-
             RenderData renderData = new RenderData(flowLayoutPanel, total, discountName, reason);
             PanelHandlers.Notify(renderData);
 

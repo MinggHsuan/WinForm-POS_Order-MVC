@@ -20,18 +20,9 @@ namespace POS_Order
         public static async Task DisCountOrder(OrderRequest orderRequest)
         {
             orderRequest.items.RemoveAll(x => x.name.Contains("贈送") || x.name.Contains("折扣"));
-            //if (orderRequest.Discount == null)
-            //{
-            //    ShowPanel.BuildUp(orderRequest.items);
-            //    return;
-            //}
-            //DiscountFactory discountFactory = new DiscountFactory();
-            //Discount discount = discountFactory.GetDiscount(discountType, items);
             DiscountContext discountContext = new DiscountContext(orderRequest);
             (string discountName, string reason) = await discountContext.ApplyStrategy();
-
             ShowPanel.BuildUp(orderRequest.items, discountName, reason);
-
         }
     }
 }

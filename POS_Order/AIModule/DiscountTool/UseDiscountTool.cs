@@ -11,10 +11,8 @@ namespace POS_Order.AIModule.DiscountTool
         public UseDiscountTool(AIResponse.Args args) : base(args)
         {
         }
-
         public override AIResponse.Args UseTools()
         {
-
             return args;
         }
     }

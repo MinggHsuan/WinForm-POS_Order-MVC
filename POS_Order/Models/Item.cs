@@ -14,8 +14,6 @@ namespace POS_Order
         public int price;
         public int amount;
         public int subtotal;
-
-
         public Item(string name, int price, int amount)
         {
             this.name = name;

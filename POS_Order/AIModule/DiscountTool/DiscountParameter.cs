@@ -27,7 +27,6 @@ namespace POS_Order.AIModule.DiscountTool
                 description = "這是選擇此折扣的原因是什麼，是一個字串"
             }
         };
-
         public override string[] required => new string[] { "discountType", "discount", "reason" };
     }
 }

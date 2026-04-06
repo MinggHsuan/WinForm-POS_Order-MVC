@@ -16,7 +16,6 @@ namespace POS_Order
         public MenuModel.Discount discountType;
         public List<Item> items;
         Classification classification = null;
-        //ADiscountStrategy discount = null;
         public DiscountContext(OrderRequest orderRequest)
         {
             this.orderRequest = orderRequest;
@@ -56,8 +55,6 @@ namespace POS_Order
             {
                 classification.discount.Discount();
             }
-
-
             return (discountName, reason);
         }
 

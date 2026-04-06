@@ -53,34 +53,11 @@ namespace POS_Order.AIModule
         public class Tool
         {
             public List<ToolDeclaration> functionDeclarations { get; set; } = new List<ToolDeclaration>();
-
-
         }
-
-
-        public class Properties
-        {
-            public PropertyDetail attendees { get; set; }
-            public PropertyDetail date { get; set; }
-            public PropertyDetail time { get; set; }
-            public PropertyDetail topic { get; set; }
-            public PropertyDetail brightness { get; set; }
-            public PropertyDetail colorTemperature { get; set; }
-            public PropertyDetail discountType { get; set; }
-            public PropertyDetail reason { get; set; }
-
-        }
-
         public class Items
         {
             public string type { get; set; }
         }
-        public class Topic
-        {
-            public string type { get; set; }
-            public string description { get; set; }
-        }
-
         public class PropertyDetail
         {
             public string type { get; set; }
