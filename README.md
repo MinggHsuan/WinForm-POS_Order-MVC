@@ -15,9 +15,18 @@
 - **語言**：C#
 - **UI框架**：WinForm
 - **框架**：.NET Framework
-- **架構模式**：MVP
+- **架構模式**：MVC
+
+## 📸 專案架構
+
+<img width="600"  alt="image" src="https://github.com/user-attachments/assets/75020a54-6967-4acc-9957-53c18fdef63a" />
 
 ## 📸 畫面展示
 
-## 畫面(Before)
-<img width="600"  alt="image" src="" />
+
+## AI推薦功能
+<img  width="600"  alt="image" src="https://github.com/user-attachments/assets/e579986c-b1cb-41b3-bc5e-f5126412ffeb" />
+
+## AI生成日式菜單的JSON直接套用並使用AI推薦功能
+
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/497a1214-b3bd-40a2-aa6e-61e4e6fb6b67" />
